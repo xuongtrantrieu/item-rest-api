@@ -13,10 +13,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Remember
 app.secret_key = 'QQ'
 api = Api(app)
 
-@app.before_first_request # Remember
-def create_tables():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity) # /auth (auto added by using JWT)
 
 api.add_resource(Store, '/store/<string:name>')
